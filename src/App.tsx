@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import LoginScreen from './screens/LoginScreen/LoginScreen';
+import PanelContainer from './container/PanelContainer/PanelContainer';
+import NotFound from './screens/NotFound/NotFound';
+export default class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	render(): React.ReactNode {
+		return (
+			<Switch>
+				<Route exact path='/login' >
+					<LoginScreen />
+				</Route>
+				<Route path='/panel' >
+					<PanelContainer />
+				</Route>
+				<Route exact path='/'>
+					<Redirect to='/login' />
+				</Route>
+				<Route path='/not-found'>
+					<NotFound />
+				</Route>
+				<Route path='*'>
+					<Redirect to='/not-found' />
+				</Route>
+			</Switch >
+		)
+	}
+
+
 }
-
-export default App;
