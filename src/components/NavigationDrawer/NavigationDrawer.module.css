@@ -1,0 +1,103 @@
+.container{
+    display: flex;
+    flex-direction: column;
+
+    padding: 16px 8px;
+    
+    transition-property: width;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in-out;
+    
+    background-color: rgb(250,250,250);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: rgb(240,240,240);
+    
+    align-items: flex-start;
+    overflow: hidden;
+}
+.close{
+    width: 28px;
+}
+.close .drawer_icon{
+    animation: test 500ms ease-in-out;
+}
+
+.open{
+    width: 15vw;
+}
+
+.open .drawer_icon{
+    align-self: flex-end;    
+}
+
+.drawer_icon{
+    width: 28px;
+    height: 32px;
+    fill: var(--main-text-color);
+}
+
+.drawer_icon:hover,
+.drawer_icon:active{
+    cursor: pointer;
+}
+
+@keyframes test {
+    0%{align-self: flex-end}
+    99%{align-self: flex-end}
+    100% {align-self: flex-start}    
+}
+
+.list{
+	display: flex;
+    width: 100%;
+	flex-direction: column;
+	list-style-type: none;
+    padding: 0;
+}
+
+.list_item{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    height: 2rem;
+    padding: 16px 0;
+    margin:0;
+ 
+}
+
+.list_item:not(:last-child){
+    border-bottom: solid 2px rgb(230,230,230);
+}
+
+.item_icon{
+    width: 28px;
+    height: 32px;
+    fill: var(--main-text-color);
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.item_icon:hover,
+.item_icon.active{
+    cursor: pointer;
+    fill:rgba(88,24,112, 0.60);
+}
+
+.link{
+    width: 100%;
+	color: rgb(88,24,112);
+	margin:8px;
+	font-size: 1.25rem;
+	font-weight: normal;
+    text-decoration: none;
+    
+}
+
+.link:hover,
+.link:active{
+	color:rgba(88,24,112, 0.60);
+	
+}
