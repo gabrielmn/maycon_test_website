@@ -9,14 +9,16 @@
 .card{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 
     border-radius: 8px;
     border-style: solid;
     border-width: 4px;
     border-color: rgb(240,240,240);
 
-    height: 40vh;
-    width: 30vw;
+    height: 45vh;
+    width: 35vw;
 
     padding-top: 2vh;
     padding-bottom: 2vh;
@@ -26,7 +28,17 @@
     align-items: center;
 }
 
+.card_header{
+    align-self: flex-start;
+}
+
 .card_input{
     width: 80%;
     align-self: center;
+}
+
+.button_container{
+    width: 80%;
+    display: flex;
+    justify-content: space-around ;
 }

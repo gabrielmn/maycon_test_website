@@ -11,7 +11,7 @@ interface Props {
 
 interface State {
     open: boolean,
-    name: string,
+    name: string | undefined,
     file: any,
 
 }
@@ -23,7 +23,7 @@ export default class ProductsScreen extends Component<Props, State> {
 
         this.state = {
             open: false,
-            name: '',
+            name: undefined,
             file: null,
         }
 
@@ -74,16 +74,19 @@ export default class ProductsScreen extends Component<Props, State> {
         return (
             <div className={classes.container}>
                 <div className={classes.card}>
-                    <Text>New Category</Text>
+                    <Text className={classes.card_header}>New Category</Text>
                     <TextInputLayout
                         className={classes.card_input}
                         label="Name"
+                        placeholder="name"
                         type="string"
                         value={this.state.name}
                         onChange={this.onChangeName}
                     />
-                    <FileInputLayout />
-                    <div>
+                    <FileInputLayout
+                        className={classes.card_input}
+                        label="Upload image" />
+                    <div className={classes.button_container}>
                         <Button onClick={() => { }}>Cancel</Button>
                         <Button onClick={() => { }}>Confirm</Button>
                     </div>
