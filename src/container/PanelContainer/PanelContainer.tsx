@@ -14,6 +14,7 @@ export default class PanelContainer extends Component {
                 <main className={classes.main}>
                     <Switch>
                         <Route path='/panel' exact>
+                            Home page not implemented.
                         </Route>
                         <Route path='/panel/products' exact>
                             <ProductsScreen/>
