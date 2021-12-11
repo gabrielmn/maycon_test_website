@@ -10,9 +10,8 @@ interface Props {
 }
 
 interface State {
-    open: boolean,
-    categoryId: number | undefined
-    name: string | undefined
+    categoryId: string
+    name: string
     file: any,
 
 }
@@ -23,27 +22,17 @@ export default class ProductsScreen extends Component<Props, State> {
         super(props);
 
         this.state = {
-            open: false,
-            categoryId: undefined,
-            name: undefined,
+            categoryId: '',
+            name: '',
             file: null,
         }
 
-        this.onClickAdd = this.onClickAdd.bind(this);
         this.onChangeCategoryId = this.onChangeCategoryId.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeFile = this.onChangeFile.bind(this);
         this.onCancelClick = this.onCancelClick.bind(this);
+        this.onConfirmClick = this.onConfirmClick.bind(this);
 
-    }
-
-
-    onClickAdd(): void {
-        this.setState((currentState) => {
-            return {
-                open: true
-            }
-        })
     }
 
     onChangeCategoryId(event: any): void {
@@ -73,12 +62,15 @@ export default class ProductsScreen extends Component<Props, State> {
     onCancelClick() {
         this.setState((current) => {
             return {
-                open: false,
-                categoryId: -1,
+                categoryId: '',
                 name: '',
                 file: null
             }
         })
+    }
+
+    onConfirmClick(){
+
     }
 
     render(): React.ReactNode {
@@ -90,7 +82,7 @@ export default class ProductsScreen extends Component<Props, State> {
                         className={classes.card_input}
                         label="Category Id"
                         placeholder="category id"
-                        type="number"
+                        type="string"
                         value={this.state.categoryId}
                         onChange={this.onChangeCategoryId}
                     />
@@ -105,7 +97,7 @@ export default class ProductsScreen extends Component<Props, State> {
                         label="Upload image"
                         className={classes.card_input} />
                     <div className={classes.button_container}>
-                        <Button onClick={() => { }}>Cancel</Button>
+                        <Button onClick={this.onCancelClick}>Cancel</Button>
                         <Button onClick={() => { }}>Confirm</Button>
                     </div>
                 </div>

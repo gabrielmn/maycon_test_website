@@ -10,8 +10,7 @@ interface Props {
 }
 
 interface State {
-    open: boolean,
-    name: string | undefined,
+    name: string,
     file: any,
 
 }
@@ -22,26 +21,17 @@ export default class ProductsScreen extends Component<Props, State> {
         super(props);
 
         this.state = {
-            open: false,
-            name: undefined,
+            name: '',
             file: null,
         }
 
-        this.onClickAdd = this.onClickAdd.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeFile = this.onChangeFile.bind(this);
         this.onCancelClick = this.onCancelClick.bind(this);
+        this.onConfirmClick = this.onConfirmClick.bind(this);
 
     }
 
-
-    onClickAdd(): void {
-        this.setState((currentState) => {
-            return {
-                open: true
-            }
-        })
-    }
 
     onChangeName(event: any): void {
         this.setState((current) => {
@@ -62,12 +52,14 @@ export default class ProductsScreen extends Component<Props, State> {
     onCancelClick() {
         this.setState((current) => {
             return {
-                open: false,
-                categoryId: -1,
                 name: '',
                 file: null
             }
         })
+    }
+
+    onConfirmClick(){
+
     }
 
     render(): React.ReactNode {
