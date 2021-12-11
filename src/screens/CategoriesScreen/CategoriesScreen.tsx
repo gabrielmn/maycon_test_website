@@ -4,6 +4,7 @@ import FileInputLayout from "../../components/FileInputLayout/FileInputLayout";
 import TextInputLayout from "../../components/TextInputLayout/TextInputLayout";
 import Text from '../../components/Text/Text';
 import classes from './CategoriesScreen.module.css'
+import { registerCategory } from '../../api/productAPI';
 
 interface Props {
 
@@ -11,7 +12,7 @@ interface Props {
 
 interface State {
     name: string,
-    file: any,
+    file: string,
 
 }
 
@@ -22,7 +23,7 @@ export default class ProductsScreen extends Component<Props, State> {
 
         this.state = {
             name: '',
-            file: null,
+            file: '',
         }
 
         this.onChangeName = this.onChangeName.bind(this);
@@ -41,10 +42,10 @@ export default class ProductsScreen extends Component<Props, State> {
         })
     }
 
-    onChangeFile(event: any): void {
+    onChangeFile(data: any): void {
         this.setState((current) => {
             return {
-                file: event.target.value
+                file: data
             }
         })
     }
@@ -53,12 +54,24 @@ export default class ProductsScreen extends Component<Props, State> {
         this.setState((current) => {
             return {
                 name: '',
-                file: null
+                file: ''
             }
         })
     }
 
-    onConfirmClick(){
+    async onConfirmClick(): Promise<void> {
+        const result = await registerCategory(this.state.name, this.state.file);
+        if (result.status === 201) {
+            alert("Inserted.")
+            this.setState((current) => {
+                return {
+                    name: '',
+                    file: ''
+                }
+            })  
+        }else{
+            alert("Not inserted.")
+        }
 
     }
 
@@ -76,11 +89,12 @@ export default class ProductsScreen extends Component<Props, State> {
                         onChange={this.onChangeName}
                     />
                     <FileInputLayout
+                        onChange={this.onChangeFile}
                         className={classes.card_input}
                         label="Upload image" />
                     <div className={classes.button_container}>
-                        <Button onClick={() => { }}>Cancel</Button>
-                        <Button onClick={() => { }}>Confirm</Button>
+                        <Button onClick={this.onCancelClick}>Cancel</Button>
+                        <Button onClick={this.onConfirmClick}>Confirm</Button>
                     </div>
                 </div>
             </div>

@@ -8,8 +8,8 @@ import classes from './FileInputLayout.module.css'
 
 interface Props {
     label: string,
-    className?: string
-    
+    className?: string,
+    onChange: (data: any) => void
 }
 
 interface State {
@@ -32,20 +32,30 @@ export default class FileInputLayout extends Component<Props, State>{
         this.inputRef = React.createRef();
         this.uploadFile = this.uploadFile.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.convertToBase64 = this.convertToBase64.bind(this);
     }
 
     uploadFile() {
         this.inputRef.current!.click();
     }
 
-    onChange(event: any) {
+    async onChange(event: any): Promise<void> {
         this.setState((currentSate) => {
             return {
                 preview: true,
                 file: event.target.files[0]
             }
         })
-        console.log(event.target.files[0])
+        const base64 = await this.convertToBase64(event.target.files[0])
+        this.props.onChange(base64);
+    }
+
+    convertToBase64(file: Blob) {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result)
+            reader.readAsDataURL(file)
+        })
     }
 
     render() {
@@ -79,7 +89,6 @@ export default class FileInputLayout extends Component<Props, State>{
                                 onClick={this.uploadFile}
                             ><EditIcon /></Button>
                         </div>
-
                 }
 
             </div>

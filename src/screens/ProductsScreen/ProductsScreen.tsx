@@ -4,6 +4,7 @@ import FileInputLayout from "../../components/FileInputLayout/FileInputLayout";
 import TextInputLayout from "../../components/TextInputLayout/TextInputLayout";
 import Text from "../../components/Text/Text";
 import classes from './ProductsScreen.module.css'
+import { registerProduct } from '../../api/productAPI';
 
 interface Props {
 
@@ -12,7 +13,7 @@ interface Props {
 interface State {
     categoryId: string
     name: string
-    file: any,
+    file: string,
 
 }
 
@@ -24,7 +25,7 @@ export default class ProductsScreen extends Component<Props, State> {
         this.state = {
             categoryId: '',
             name: '',
-            file: null,
+            file: '',
         }
 
         this.onChangeCategoryId = this.onChangeCategoryId.bind(this);
@@ -51,10 +52,10 @@ export default class ProductsScreen extends Component<Props, State> {
         })
     }
 
-    onChangeFile(event: any): void {
+    onChangeFile(data: any): void {
         this.setState((current) => {
             return {
-                file: event.target.value
+                file: data
             }
         })
     }
@@ -64,13 +65,25 @@ export default class ProductsScreen extends Component<Props, State> {
             return {
                 categoryId: '',
                 name: '',
-                file: null
+                file: ''
             }
         })
     }
 
-    onConfirmClick(){
-
+    async onConfirmClick(){
+        const result = await registerProduct(this.state.categoryId, this.state.name, this.state.file)
+        if(result.status === 201){
+            alert("Inserted.")
+            this.setState((current) => {
+                return {
+                    categoryId: '',
+                    name: '',
+                    file: ''
+                }
+            })  
+        }else{
+            alert("Not inserted.")
+        }
     }
 
     render(): React.ReactNode {
@@ -94,11 +107,12 @@ export default class ProductsScreen extends Component<Props, State> {
                         onChange={this.onChangeName}
                         value={this.state.name} />
                     <FileInputLayout 
+                        onChange={this.onChangeFile}
                         label="Upload image"
                         className={classes.card_input} />
                     <div className={classes.button_container}>
                         <Button onClick={this.onCancelClick}>Cancel</Button>
-                        <Button onClick={() => { }}>Confirm</Button>
+                        <Button onClick={this.onConfirmClick}>Confirm</Button>
                     </div>
                 </div>
             </div>
