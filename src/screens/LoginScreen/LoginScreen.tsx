@@ -93,7 +93,7 @@ export default withRouter(class LoginScreen extends Component<Props, State>{
                     <Button
                         className={classes.forgot_password_button}
                         onClick={this.onClickRegister}>forgot password</Button>
-                    <div>
+                    <div className={classes.button_container}>
                         <Button
 
                             onClick={this.onClickRegister}>Register</Button>

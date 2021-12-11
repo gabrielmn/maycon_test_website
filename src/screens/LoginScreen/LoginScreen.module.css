@@ -26,3 +26,10 @@
     font-size: 0.75rem;
     font-weight: normal;
 }
+
+.button_container{
+    margin-top: 5vh;
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+}
