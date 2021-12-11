@@ -1,4 +1,4 @@
-const HOST =  'http://localhost:3001'
+const HOST =  'http://20.195.198.55:3001'
 
 enum Method {
     POST = "POST",
