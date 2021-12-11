@@ -67,8 +67,8 @@ export default class TextInputLayout extends Component<Props, State> {
     }
 
     onClickLabel() {
-        // this.inputRef.current.focus();
-        setTimeout(() => { // bug fix, no fucking idea why. https://stackoverflow.com/questions/43145549/how-react-programmatically-focus-input
+        
+        setTimeout(() => {
             this.inputRef.current!.focus();
         }, 50);
     }
