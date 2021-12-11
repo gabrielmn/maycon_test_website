@@ -39,7 +39,7 @@ export const routes = Object.freeze({
         })
     ),
     REGISTER_PRODUCT: new Route(
-        '/product/category',
+        '/product',
         Method.POST,
         new Headers({
             'Content-Type': 'application/json',
