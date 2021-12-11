@@ -13,7 +13,7 @@ interface Props {
     className?: string,
     placeholder?: string,
     label: string,
-    value: string | number
+    value: string | number | undefined
 }
 
 interface State {
