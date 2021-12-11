@@ -7,7 +7,9 @@ import { ReactComponent as EditIcon } from '../../assets/icons/edit_black_48dp.s
 import classes from './FileInputLayout.module.css'
 
 interface Props {
+    label: string,
     className?: string
+    
 }
 
 interface State {
@@ -65,7 +67,7 @@ export default class FileInputLayout extends Component<Props, State>{
                             onClick={this.uploadFile}
                         >
                             <UploadFileIcon />
-                            Upload File
+                            {this.props.label}
                         </Button>
                         :
                         <div className={classes.image_container} >
