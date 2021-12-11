@@ -30,4 +30,20 @@ export const routes = Object.freeze({
             'Accept': 'application/json',
         })
     ),
+    REGISTER_CATEGORY: new Route(
+        '/product/category',
+        Method.POST,
+        new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        })
+    ),
+    REGISTER_PRODUCT: new Route(
+        '/product/category',
+        Method.POST,
+        new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        })
+    ),
 })
