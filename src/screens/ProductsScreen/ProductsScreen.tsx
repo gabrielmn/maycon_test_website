@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from '../../components/Button/Button';
 import FileInputLayout from "../../components/FileInputLayout/FileInputLayout";
 import TextInputLayout from "../../components/TextInputLayout/TextInputLayout";
-
+import Text from "../../components/Text/Text";
 import classes from './ProductsScreen.module.css'
 
 interface Props {
@@ -11,8 +11,8 @@ interface Props {
 
 interface State {
     open: boolean,
-    categoryId: number,
-    name: string,
+    categoryId: number | undefined
+    name: string | undefined
     file: any,
 
 }
@@ -24,8 +24,8 @@ export default class ProductsScreen extends Component<Props, State> {
 
         this.state = {
             open: false,
-            categoryId: -1,
-            name: '',
+            categoryId: undefined,
+            name: undefined,
             file: null,
         }
 
@@ -85,22 +85,28 @@ export default class ProductsScreen extends Component<Props, State> {
         return (
             <div className={classes.container}>
                 <div className={classes.card}>
-                    <h1>New Product</h1>
+                    <Text className={classes.card_header}>New Product</Text>
                     <TextInputLayout
-                        label="Category Id"                            
+                        className={classes.card_input}
+                        label="Category Id"
+                        placeholder="category id"
                         type="number"
-                        value={this.state.categoryId} 
-                        onChange={this.onChangeCategoryId} 
+                        value={this.state.categoryId}
+                        onChange={this.onChangeCategoryId}
                     />
                     <TextInputLayout
-                        label="Name" 
-                        type="string" 
-                        onChange={this.onChangeName} 
-                        value={this.state.name}/>
-                    <FileInputLayout/>
-                    <div>
-                        <Button onClick={()=>{}}>Cancel</Button>
-                        <Button onClick={()=>{}}>Confirm</Button>
+                        className={classes.card_input}
+                        label="Name"
+                        placeholder="name"
+                        type="string"
+                        onChange={this.onChangeName}
+                        value={this.state.name} />
+                    <FileInputLayout 
+                        label="Upload image"
+                        className={classes.card_input} />
+                    <div className={classes.button_container}>
+                        <Button onClick={() => { }}>Cancel</Button>
+                        <Button onClick={() => { }}>Confirm</Button>
                     </div>
                 </div>
             </div>
