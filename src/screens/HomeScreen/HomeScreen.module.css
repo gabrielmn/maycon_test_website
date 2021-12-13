@@ -1,0 +1,130 @@
+.screen{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.separator{
+    height: 2px;
+    width: 90%;
+    background-color: black;
+    align-self: center;
+    justify-self: center;
+}
+
+.title{
+    /* padding-left: 16px; */
+    margin-left: 16px;
+    margin-top: 8px;
+    font-size: 1.5rem;
+}
+
+.product_container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    border-color: rgb(240,240,240);
+    border-width: 4px;
+    border-style: solid;
+    width: 45%;
+}
+
+.product_list_header{
+    display: grid;
+    grid-template-areas: "image name category";
+    grid-template-columns: 125px repeat(2, 1fr);
+    margin:16px;
+    align-items: center;
+    justify-items: center;
+}
+
+.product_list_header_name{
+    grid-area: name;
+    font-size: 1.15rem;
+}
+
+.product_list_header_category{
+    grid-area: category;
+    font-size: 1.15rem;
+}
+
+.product_list_item{
+    display: grid;
+    grid-template-areas: "image name category";
+    grid-template-columns: 125px repeat(2, 1fr);
+    margin:16px;
+    align-items: center;
+    justify-items: center;
+
+    border-radius: 8px;
+    border-color: rgb(240,240,240);
+    border-style: solid;
+    border-width: 2px;
+    background-color: rgb(240,240,240);
+}
+
+.product_list_item_image{
+    grid-area: image;
+    width: 125px;
+}
+
+.product_list_item_name{
+    grid-area: name;
+    font-size: 1rem;
+}
+
+.product_list_item_category{
+    grid-area: category;
+    font-size: 1rem;
+}
+
+.category_container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    border-color: rgb(240,240,240);
+    border-width: 4px;
+    border-style: solid;
+    width: 45%;
+}
+
+.category_list_header{
+    display: grid;
+    grid-template-areas: "image name";
+    grid-template-columns: 125px 1fr;
+    margin:16px;
+    align-items: center;
+    justify-items: center;
+}
+
+.category_list_header_name{
+    grid-area: name;
+    font-size: 1.15rem;
+}
+
+.category_list_item{
+    display: grid;
+    grid-template-areas: "image name";
+    grid-template-columns: 125px 1fr;
+    margin:16px;
+    align-items: center;
+    justify-items: center;
+
+    border-radius: 8px;
+    border-color: rgb(240,240,240);
+    border-style: solid;
+    border-width: 2px;
+    background-color: rgb(240,240,240);
+}
+
+.category_list_item_image{
+    grid-area: image;
+    width: 125px;
+}
+
+.category_list_item_name{
+    grid-area: name;
+    font-size: 1rem;
+}
+

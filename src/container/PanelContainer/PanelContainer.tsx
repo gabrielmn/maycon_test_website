@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import NavigationDrawer from '../../components/NavigationDrawer/NavigationDrawer';
 import ProductsScreen from '../../screens/ProductsScreen/ProductsScreen';
 import CategoriesScreen from '../../screens/CategoriesScreen/CategoriesScreen'
+import HomeScreen from '../../screens/HomeScreen/HomeScreen';
 import classes from './PanelContainer.module.css';
 
 export default class PanelContainer extends Component {
@@ -14,7 +15,7 @@ export default class PanelContainer extends Component {
                 <main className={classes.main}>
                     <Switch>
                         <Route path='/panel' exact>
-                            Home page not implemented.
+                            <HomeScreen/>
                         </Route>
                         <Route path='/panel/products' exact>
                             <ProductsScreen/>
