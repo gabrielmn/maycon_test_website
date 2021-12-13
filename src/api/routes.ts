@@ -46,4 +46,20 @@ export const routes = Object.freeze({
             'Accept': 'application/json',
         })
     ),
+    GET_ALL_PRODUCTS: new Route(
+        '/product',
+        Method.GET,
+        new Headers({
+            // 'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        })
+    ),
+    GET_ALL_CATEGORIES: new Route(
+        '/product/category',
+        Method.GET,
+        new Headers({
+            // 'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        })
+    ),
 })
