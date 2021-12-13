@@ -14,3 +14,13 @@ export async function registerProduct(categoryId: string, name: string, image: s
     });
     return result;
 }
+
+export async function getAllProduct() {
+    const result = await api(routes.GET_ALL_PRODUCTS, null);
+    return result;
+}
+
+export async function getAllCategories() {
+    const result = await api(routes.GET_ALL_CATEGORIES, null);
+    return result;
+}
