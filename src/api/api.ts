@@ -1,10 +1,12 @@
 import { Route } from "./routes";
 
-export async function api(route: Route, body: JSON){
-    return await fetch(route.url, {
-        mode:'cors',
+export async function api(route: Route, body: JSON | null) {
+    let options: RequestInit = {
+        mode: 'cors',
         headers: route.headers,
-        method: route.method,
-        body: JSON.stringify(body)
-    })
+        method: route.method
+    }
+    if(body !== null)
+        options.body = JSON.stringify(body); 
+    return await fetch(route.url, options);
 }
