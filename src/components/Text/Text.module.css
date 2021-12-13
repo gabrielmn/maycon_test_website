@@ -1,5 +1,5 @@
 .text{
     color: var(--main-color);
-    font:1.25rem;
+    font-size:1.25rem;
     font-family: Poppins;
 }
